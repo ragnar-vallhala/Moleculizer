@@ -1,5 +1,8 @@
 #include "fileDialog.h"
 #include <imgui.h>
+#include <vector>
+#include <string>
+#include <iostream>
 
 #if defined(_WIN32)
 #include <windows.h>
@@ -13,6 +16,16 @@ std::wstring stringToWString(const std::string& s) {
     len = MultiByteToWideChar(CP_ACP, 0, s.c_str(), slength, 0, 0);
     std::wstring r(len, L'\0');
     MultiByteToWideChar(CP_ACP, 0, s.c_str(), slength, &r[0], len);
+    return r;
+}
+
+// Utility function to convert std::wstring to std::string
+std::string wstringToString(const std::wstring& ws) {
+    int len;
+    int wlength = (int)ws.length() + 1;
+    len = WideCharToMultiByte(CP_ACP, 0, ws.c_str(), wlength, 0, 0, NULL, NULL);
+    std::string r(len, '\0');
+    WideCharToMultiByte(CP_ACP, 0, ws.c_str(), wlength, &r[0], len, NULL, NULL);
     return r;
 }
 
@@ -33,7 +46,7 @@ static std::vector<std::string> getDirectoryContents(const std::string& path) {
         do {
             const std::wstring fileOrDir = findFileData.cFileName;
             if (fileOrDir != L"." && fileOrDir != L"..") {
-                items.push_back(path + "\\" + std::string(fileOrDir.begin(), fileOrDir.end()));
+                items.push_back(path + "\\" + wstringToString(fileOrDir));
             }
         } while (FindNextFileW(hFind, &findFileData) != 0);
         FindClose(hFind);

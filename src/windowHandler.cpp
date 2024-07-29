@@ -6,6 +6,7 @@ WindowHandler::WindowHandler(const char* window_name)
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
+    glfwWindowHint(GLFW_SAMPLES, 4); 
     m_window = glfwCreateWindow(800,600, window_name, NULL, NULL);
     if(m_window==nullptr)
     {
@@ -19,6 +20,7 @@ WindowHandler::WindowHandler(const char* window_name)
     }
     glViewport(0, 0, 800, 600);
     glfwSetFramebufferSizeCallback(m_window, framebufferSizeCallback);
+    glEnable(GL_MULTISAMPLE);
     glEnable(GL_DEPTH_TEST);
 }
 
