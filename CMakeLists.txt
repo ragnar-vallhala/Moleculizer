@@ -39,4 +39,5 @@ target_link_libraries(mol PRIVATE glfw opengl32.lib glm::glm)
 #target_link_directories(${project} PRIVATE libs/lib-vc2010-64)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+set(CMAKE_BUILD_PARALLEL_LEVEL 16)
 

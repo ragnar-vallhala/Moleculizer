@@ -13,7 +13,7 @@ typedef struct Configuration
 
     glm::vec3 m_position{0,0,-7};
     glm::vec3 m_rotation{0};
-    float m_radius{1.3};
+    float m_radius{1.3f};
 
     glm::vec4 m_bgColor{1.0f, 1.0f, 1.0f, 1.0f};
 

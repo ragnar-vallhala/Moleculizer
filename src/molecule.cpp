@@ -98,7 +98,7 @@ void Molecule::render(glm::vec2 screenSize, glm::vec3 pos,glm::vec3 rot, glm::ve
             shader.uniform3f("objectColor",Utils::atomColor[atom.name]);
 
             glBindVertexArray(sphereVAO);
-            glDrawElements(GL_TRIANGLE_STRIP, sphereIndices.size(), GL_UNSIGNED_INT, 0);
+            glDrawElements(GL_TRIANGLE_STRIP, (GLsizei)sphereIndices.size(), GL_UNSIGNED_INT, 0);
         }
 
             //bond

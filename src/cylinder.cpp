@@ -53,7 +53,7 @@ void Cylinder::generateCylinder(const glm::vec3& start, const glm::vec3& end, fl
         
     }
 
-    int maxIndex = 2*firstCircleVertices.size()-1;
+    int maxIndex = (int)(2*firstCircleVertices.size()-1);
     int index=0;
     while(index+5<=maxIndex)
     {

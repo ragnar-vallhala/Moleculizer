@@ -19,9 +19,9 @@ std::vector<Atom> XYZ::getAtoms(const char* path)
         if(count<3) continue;
         std::stringstream ss2(line);
         std::string atomName;
-        double x,y,z;
+        float x,y,z;
         ss2>>atomName>>x>>y>>z;
-        atoms.push_back(Atom(x,y,z,0.01,atomName));
+        atoms.push_back(Atom(x,y,z,0.01f,atomName));
         
     }
 
@@ -35,8 +35,8 @@ std::string XYZ::getName(const char *path)
     std::string name;
     int begin{},end{};
     int count{};
-    begin = content.find_first_of("\n",0);
-    end = content.find_first_of("\n",begin+1);
+    begin = (int)content.find_first_of("\n",0);
+    end = (int)content.find_first_of("\n",begin+1);
     name = content.substr(begin+1,end-begin-1);
     return name;
 }
