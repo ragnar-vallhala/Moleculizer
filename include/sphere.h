@@ -3,6 +3,7 @@
 #include <iostream>
 #include <glad/glad.h>
 #include <glm/glm.hpp>
+#include <vector>
 namespace Sphere
 {
     const float PI = 3.14159265359f;

@@ -62,7 +62,8 @@ void Application::putFPS()
 
 bool Application::loadMolecule(const char *path)
 {
-    if(((std::string)path).ends_with(".xyz"))
+    
+    if(Utils::ends_with(path,".xyz"))
     {
         m_molecule = new Molecule(path);
     }
