@@ -4,4 +4,6 @@ build
 compile_commands.json
 *.bat
 log
+.html
+.css
 
