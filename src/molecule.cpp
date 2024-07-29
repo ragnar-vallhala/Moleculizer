@@ -20,9 +20,16 @@ void Molecule::printAtoms() const
 
 void Molecule::render(glm::vec2 screenSize, glm::vec3 pos,glm::vec3 rot, glm::vec1 radius )
 {
+    if(m_name!="")
+    {
+        ImGui::Begin("Molecule");
+        ImGui::Text(m_name.c_str());
+        ImGui::End();
+    }
     
     if(m_atoms.size()>0)
     {
+        
         Shader shader = Shader("../../shaders/sphereVert.glsl","../../shaders/sphereFrag.glsl");
         std::vector<float> sphereVertices;
         std::vector<unsigned int> sphereIndices;
@@ -55,14 +62,6 @@ void Molecule::render(glm::vec2 screenSize, glm::vec3 pos,glm::vec3 rot, glm::ve
         getBonds(m_atoms,starts,ends);
 
 
-
-// #ifdef DEBUG
-// std::cout << "Bonds: " << std::endl;
-// for(int i{};i<starts.size();i++)
-// {
-//     std::cout<<starts[i].x<<" "<<starts[i].y<<" "<<starts[i].z<<"\t\t"<<ends[i].x<<" "<<ends[i].y<<" "<<ends[i].z<<std::endl;
-// }
-// #endif
 
 
 

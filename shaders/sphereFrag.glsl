@@ -5,12 +5,14 @@ in vec3 FragPos;
 in vec3 Normal;
 
 in vec3 modLightPos;
-uniform vec3 modViewPos;
+in vec3 modViewPos;
 uniform vec3 lightColor;
 uniform vec3 objectColor;
 
 void main()
 {
+    // modLightPos = vec3(100,100,-100);
+    // modViewPos = vec3(0,0,-10);
     // Ambient
     float ambientStrength = 0.6;
     vec3 ambient = ambientStrength * lightColor;

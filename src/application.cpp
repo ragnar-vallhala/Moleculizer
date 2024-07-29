@@ -16,48 +16,33 @@ Application::~Application()
 
 void Application::run()
 {
+
     auto currentTime = std::chrono::system_clock::now();
-
-    // Variables for file dialog
-    bool showDialog = false;
-    bool showControl = false;
-    bool showFPS = false;
-    std::string moleculePath;
-    std::string selectedPath;
-    bool drawable = false;
-    float posX = 0.0;
-    float posY = 0.0;
-    float posZ = -7.0;
-    float radius = 1.3;
-    float rotX{},rotY{},rotZ{}; 
-    glm::vec4 bgColor{1.0f, 1.0f, 1.0f, 1.0f};
-
+    Configuration config{};
     while (!m_windowHandler->closeWindow())
     {
-        glClearColor(bgColor.r,bgColor.g,bgColor.b,bgColor.a);
+        glClearColor(config.m_bgColor.r,config.m_bgColor.g,config.m_bgColor.b,config.m_bgColor.a);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         m_imgui->IMGUIStart();
         m_windowHandler->processInput();
-        m_imgui->fileSystemUI(selectedPath,showDialog,showControl, posX,posY,posZ,rotX,rotY,rotZ, radius,bgColor,showFPS);
-        if(drawable)
+        m_imgui->fileSystemUI(config);
+
+
+        if(m_molecule)
         {
-            m_molecule->render(m_windowHandler->getWindowSize(), glm::vec3(posX,posY,posZ),glm::vec3(rotX,rotY,rotZ), glm::vec1(radius));
+            m_molecule->render(m_windowHandler->getWindowSize(), config.m_position,config.m_rotation, glm::vec1(config.m_radius));
+
         }
-        if(selectedPath!="" && selectedPath!=moleculePath)
+        if(m_molecule==nullptr || config.m_selectedPath!=config.m_moleculePath)
         {
-            if(loadMolecule(selectedPath.c_str()))
+            if(loadMolecule(config.m_selectedPath.c_str()))
             {
-                moleculePath=selectedPath;
-                std::cout<<moleculePath<<std::endl;
-                drawable = true;
-            }
-            else
-            {
-                drawable = false;
+                config.m_moleculePath=config.m_selectedPath;
+                std::cout<<config.m_moleculePath<<std::endl;
             }
         }
         m_imgui->IMGUIRender();
-        if(showFPS)
+        if(config.m_showFPS)
             this->putFPS();
         else    glfwSetWindowTitle(m_windowHandler->getWindow(),("Moleculizer"));
 

@@ -7,6 +7,7 @@
 #include <string>
 #include "shader.h"
 #include "molecule.h"
+#include "appConfig.h"
 
 
 class Application
