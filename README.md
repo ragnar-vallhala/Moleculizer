@@ -30,7 +30,7 @@ cd build/Debug
 ```
 ## Application
 You can open new molecules from ```open``` option in the ```file``` menu.
-![Screenshot of the application](res\Moleculizer.png)
+![Screenshot of the application](res/Moleculizer.png)
 
 ## Note
 The current version is built with 
