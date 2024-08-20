@@ -59,18 +59,8 @@ void IMGUI::fileSystemUI(Configuration &config)
     if (ImGui::BeginMainMenuBar()) {
             if (ImGui::BeginMenu("File")) {
                 if (ImGui::MenuItem("Open")) {  config.m_showDialog = true; }
-                if (ImGui::MenuItem("Save")) {}
                 ImGui::Checkbox("Toggle FPS", &config.m_showFPS);
                 if (ImGui::MenuItem("Exit")) { /* Do something */ }
-                ImGui::EndMenu();
-            }
-            if (ImGui::BeginMenu("Edit")) {
-                if (ImGui::MenuItem("Undo", "Ctrl+Z")) { /* Do something */ }
-                if (ImGui::MenuItem("Redo", "Ctrl+Y", false, false)) { /* Disabled item */ }
-                ImGui::Separator();
-                if (ImGui::MenuItem("Cut", "Ctrl+X")) { /* Do something */ }
-                if (ImGui::MenuItem("Copy", "Ctrl+C")) { /* Do something */ }
-                if (ImGui::MenuItem("Paste", "Ctrl+V")) { /* Do something */ }
                 ImGui::EndMenu();
             }
             if (ImGui::BeginMenu("View"))
