@@ -4,7 +4,7 @@
 #include "imgui_impl_glfw.h"
 #include "glm/glm.hpp"
 #include "imgui_impl_opengl3.h"
-#include "glfw/glfw3.h"
+#include "GLFW/glfw3.h"
 #include <iostream>
 #include <string>
 #include"appConfig.h"

@@ -35,7 +35,7 @@ add_executable(mol ${SOURCES})
 
 #target_include_directories(${project})
 
-target_link_libraries(mol PRIVATE glfw opengl32.lib glm::glm)
+target_link_libraries(mol PRIVATE glfw -lGL glm::glm)
 #target_link_directories(${project} PRIVATE libs/lib-vc2010-64)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
